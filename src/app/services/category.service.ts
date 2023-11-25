@@ -32,9 +32,9 @@ export class CategoryService {
     return this.httpClient.put<Category>(`${this.url}UpdateCategory`, request)
   }
 
-  //deleteCategory(id: number):Observable<boolean>{
-  //  return this.httpClient.delete(`${this.url}DeleteCategory/${id}`)
-  //}
+  deleteCategory(id: number):Observable<boolean>{
+    return this.httpClient.delete<boolean>(`${this.url}DeleteCategory/${id}`)
+  }
 
   //https://localhost:7250/api/v1/Category/DeleteCategory?idCategory=3
 
