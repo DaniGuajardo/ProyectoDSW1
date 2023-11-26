@@ -32,8 +32,8 @@ export class BookService {
     return this.httpClient.put<Book>(`${this.url}UpdateBook`, request)
   }
 
-  //deleteBook(id: number):Observable<boolean>{
-  //  return this.httpClient.delete(`${this.url}DeleteBook/${id}`)
-  //}
+  deleteBook(id: number):Observable<boolean>{
+    return this.httpClient.delete<boolean>(`${this.url}DeleteBook/${id}`)
+  }
 
 }

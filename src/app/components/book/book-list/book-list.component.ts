@@ -11,7 +11,17 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class BookListComponent {
   books:Book[]=[]
-    constructor(private bookService:BookService){
-      this.bookService.getBooks().subscribe(res=>this.books=res)
+  categories:Category[] = []
+
+    constructor(
+      private bookService:BookService,
+      private categoryService:CategoryService
+      ){
+      this.bookService.getBooks().subscribe(res=>this.books=res);
+      this.categoryService.getCategories().subscribe(res=>this.categories=res)
+    }
+
+    mostrarCategoria(categoria: Category): String{
+      return categoria.name;
     }
 }

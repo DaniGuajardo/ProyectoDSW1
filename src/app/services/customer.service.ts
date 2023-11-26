@@ -31,8 +31,8 @@ export class CustomerService {
     return this.httpClient.put<Customer>(`${this.url}UpdateCustomer`, request)
   }
 
-  //deleteCustomer(id: number):Observable<boolean>{
-  //  return this.httpClient.delete(`${this.url}DeleteCustomer/${id}`)
-  //}
+  deleteCustomer(id: number):Observable<boolean>{
+    return this.httpClient.delete<boolean>(`${this.url}DeleteCustomer/${id}`)
+  }
 
 }

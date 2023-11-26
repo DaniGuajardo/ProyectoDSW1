@@ -15,9 +15,9 @@ export class CartService {
     return this.httpClient.get<Order[]>(`${this.url}GetOrders`);
   }
 
-  //placeOrder(request: Order):Observable<boolean>{
-  //  return this.httpClient.post<Order>(`${this.url}PlaceOrder`, request)
-  //}
+  placeOrder(request: Order):Observable<boolean>{
+    return this.httpClient.post<boolean>(`${this.url}PlaceOrder`, request)
+  }
 
   getOrderById​(id: number):Observable<Order[]>{
     return this.httpClient.get<Order[]>(`${this.url}GetOrderById​/${id}`)

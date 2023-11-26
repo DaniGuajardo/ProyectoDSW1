@@ -36,7 +36,4 @@ export class CategoryService {
     return this.httpClient.delete<boolean>(`${this.url}DeleteCategory/${id}`)
   }
 
-  //https://localhost:7250/api/v1/Category/DeleteCategory?idCategory=3
-
-
 }

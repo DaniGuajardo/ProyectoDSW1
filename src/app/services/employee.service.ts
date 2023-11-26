@@ -31,8 +31,8 @@ export class EmployeeService {
     return this.httpClient.put<Employee>(`${this.url}UpdateEmployee`, request)
   }
 
-  //deleteEmployee(id: number):Observable<boolean>{
-  //  return this.httpClient.delete(`${this.url}DeleteEmployee/${id}`)
-  //}
+  deleteEmployee(id: number):Observable<boolean>{
+    return this.httpClient.delete<boolean>(`${this.url}DeleteEmployee/${id}`)
+  }
 
 }
