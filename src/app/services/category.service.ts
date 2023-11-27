@@ -25,7 +25,7 @@ export class CategoryService {
   //https://localhost:7250/api/v1/Category/GetCategories/page/0/size/2
 
   createCategory(request: Category):Observable<Category>{
-    return this.httpClient.post<Category>(`${this.url}CreateCategory`, request)
+    return this.httpClient.post<Category>(`${this.url}CreateCategory`, request);
   }
 
   updateCategory(request: Category):Observable<Category>{
