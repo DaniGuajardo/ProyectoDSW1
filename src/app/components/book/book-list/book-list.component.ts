@@ -24,4 +24,19 @@ export class BookListComponent {
     mostrarCategoria(categoria: Category): String{
       return categoria.name;
     }
+
+
+     //METODO PARA ELIMIAR
+    deleteBook(id: number | undefined) {
+    if (id !== undefined) {
+     if (confirm('¿Estás seguro de que quieres eliminar este Libro?')) {
+        this.bookService.deleteBook(id).subscribe(() => {
+          console.log('Libro eliminado correctamente.');
+          this.bookService.getBooks().subscribe(res => this.books = res);
+        });
+      }
+    }
+}
+
+
 }

@@ -33,7 +33,7 @@ export class BookService {
   }
 
   deleteBook(id: number):Observable<boolean>{
-    return this.httpClient.delete<boolean>(`${this.url}DeleteBook/${id}`)
+    return this.httpClient.delete<boolean>(`${this.url}DeleteBook?idBook=${id}`)
   }
 
 }
