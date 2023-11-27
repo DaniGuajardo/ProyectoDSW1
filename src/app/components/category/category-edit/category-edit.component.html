@@ -2,15 +2,15 @@
     <div class="card-header">
         <h3>Editar Categoría</h3>
     </div>
-    <form action="/ruta-para-actualizar-categoria" method="POST">
+    <form (ngSubmit)="guardarCategoria()" method="POST">
         <div class="card-body">
             <div class="mb-3">
-                <label for="IdCategory" class="form-label">ID:</label>
-                <input type="text" class="form-control" id="IdCategory" name="IdCategory" readonly>
+                <label for="idCategory" class="form-label">ID:</label>
+                <input type="text" class="form-control" id="idCategory" name="idCategory" readonly [(ngModel)]="IdCategory">
             </div>
             <div class="mb-3">
-                <label for="Name" class="form-label">Nombre de la Categoría:</label>
-                <input type="text" class="form-control" id="Name" name="Name" required>
+                <label for="name" class="form-label">Nombre de la Categoría:</label>
+                <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="Name">
             </div>
         </div>
         <div class="card-footer text-end">

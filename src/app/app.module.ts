@@ -43,7 +43,7 @@ const routes: Routes = [
       children:[
         {path: '', component: CategoryListComponent},
         {path: 'addCategory', component: CategoryAddComponent, title:'Nueva Categoria'},
-        {path: 'editCategory', component: CategoryEditComponent, title:'Editar Categoria'}
+        {path: 'editCategory/:id', component: CategoryEditComponent, title:'Editar Categoria'}
       ]},
     {path:'books', component:BookComponent, title: 'Libros',
     children:[

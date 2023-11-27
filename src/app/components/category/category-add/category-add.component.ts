@@ -18,6 +18,7 @@ export class CategoryAddComponent {
     this.categoryService.createCategory(newCategory).subscribe(
       (result) => {
         console.log('Categoría creada con éxito:', result);
+        alert("La categoria se ha registrado correctamente");
         //REDIRIGIR AL LISTADO CATEGORIAS
         this.router.navigate(['/mantenimiento/categories']);
       },

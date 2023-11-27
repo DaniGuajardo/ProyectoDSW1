@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -9,11 +10,16 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class CustomerListComponent {
   customers:Customer[]=[]
-  service: CustomerService = inject(CustomerService)
-  constructor(private customerService:CustomerService){
+  constructor(
+    private customerService:CustomerService,
+    private router:Router){
     this.customerService.getCustomers().subscribe(res=>this.customers=res)
   }
 
+  // Metodo para editar
+  editCustomer(id:any) {
+    this.router.navigate(['/mantenimiento/customers/editCustomer', id]);
+  }
 
  //METODO PARA ELIMIAR
  deleteCustomer(id: number | undefined) {
@@ -21,6 +27,7 @@ export class CustomerListComponent {
     if (confirm('¿Estás seguro de que quieres eliminar este Cliente?')) {
       this.customerService.deleteCustomer(id).subscribe(() => {
         console.log('Cliente eliminada correctamente.');
+        alert("Se ha eliminado el cliente");
         // Recargar la lista de categorías después de la eliminación
         this.customerService.getCustomers().subscribe(res => this.customers = res);
       });

@@ -37,6 +37,7 @@ export class BookAddComponent {
     this.bookService.createBook(newBook).subscribe(
       (result) => {
         console.log('Libro creado con éxito:', result);
+        alert("El libro se ha registrado correctamente");
         this.location.back();
       },
       (error) => {

@@ -29,6 +29,7 @@ export class EmployeeAddComponent {
     this.employeeService.createEmployee(newEmployee).subscribe(
       (result) => {
         console.log('Empleado creado con éxito:', result);
+        alert("El empleado se ha registrado correctamente");
         this.location.back();
       },
       (error) => {

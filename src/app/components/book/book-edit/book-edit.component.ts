@@ -1,18 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Location } from '@angular/common';
-import { Book } from 'src/app/models/book';
+import { Book, IBook } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-book-edit',
   templateUrl: './book-edit.component.html',
   styleUrls: ['./book-edit.component.css']
 })
-export class BookEditComponent {
-  route:ActivatedRoute = inject(ActivatedRoute)
-  service = inject(BookService)
-  book:Book = new Book();
+export class BookEditComponent implements OnInit{
+  categories:Category[] = []
 
   IdBook:number=0;
   Title: String = '';
@@ -22,23 +22,30 @@ export class BookEditComponent {
   Stock:number = 0;
   ImageUrl:String='';
 
+  datosBook!: IBook;
+
   constructor(
     private location:Location,
     private bookService:BookService,
+    private activeRoute:ActivatedRoute,
+    private route:Router,
+    private categoryService:CategoryService
     ){
-      const IdBook= Number(this.route.snapshot.params['id']);
-      this.service.getBookById(IdBook).subscribe(book => {
-        this.book = book;
-       });
-      this.IdBook=Number(this.route.snapshot.params['id'])
+      this.categoryService.getCategories().subscribe(res=>this.categories=res)      
+  }
 
-      //no muestra datos :(
-        this.Title = String(this.book?.title),
-        this.Author = String(this.book?.author),
-        this.IdCategory = Number(this.book?.idCategory),
-        this.Price = Number(this.book?.price),
-        this.Stock = Number(this.book?.stock),
-        this.ImageUrl = String(this.book?.imageUrl)
+  ngOnInit(): void {
+    let idBook = Number(this.activeRoute.snapshot.paramMap.get('id'));
+    this.bookService.getBookById(idBook).subscribe((data) => {
+      this.datosBook = data
+      this.IdBook = idBook;
+      this.Title = this.datosBook.title;
+      this.Author = this.datosBook.author;
+      this.IdCategory = this.datosBook.idBook;
+      this.Price =this.datosBook.price;
+      this.Stock= this.datosBook.stock;
+      this.ImageUrl= this.datosBook.imageUrl;
+    })
   }
 
 
@@ -54,6 +61,7 @@ export class BookEditComponent {
     this.bookService.updateBook(book).subscribe(
       (result) => {
         console.log('Libro editado con éxito:', result);
+        alert("El libro se ha editado correctamente");
         this.location.back();
       },
       (error) => {

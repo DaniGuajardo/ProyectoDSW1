@@ -6,3 +6,12 @@ export class OrderItem {
     quantity?:number
     subTotal?:number
 }
+
+export interface IOrderItem {
+    idOrderItem:number; 
+    idBook:number; 
+    title:string; 
+    unitPrice:number; 
+    quantity:number;
+    subTotal:number;
+}

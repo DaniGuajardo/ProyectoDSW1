@@ -29,6 +29,7 @@ export class CustomerAddComponent {
     this.customerService.createCustomer(newCustomer).subscribe(
       (result) => {
         console.log('Cliente creado con éxito:', result);
+        alert("El cliente se ha registrado correctamente");
         this.location.back();
       },
       (error) => {

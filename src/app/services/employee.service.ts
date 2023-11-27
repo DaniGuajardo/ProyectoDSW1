@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Employee } from '../models/employee';
+import { Observable, catchError, throwError } from 'rxjs';
+import { Employee, IEmployee } from '../models/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,12 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(`${this.url}GetEmployees`);
   }
 
-  getEmployeeById​(id: number):Observable<Employee>{
-    return this.httpClient.get<Employee>(`${this.url}GetEmployeeById​/${id}`)
+  getEmployeeById​(id: number):Observable<IEmployee>{
+    return this.httpClient.get<IEmployee>(`${this.url}GetEmployeeById/${id}`).pipe(catchError(this.handleError))
   }
 
   getEmployeesPagination(page:number, size:number):Observable<Employee[]>{
-    return this.httpClient.get<Employee[]>(`${this.url}GetEmployees​/page/${page}/size/${size}`)
+    return this.httpClient.get<Employee[]>(`${this.url}GetEmployees/page/${page}/size/${size}`)
   }
   
   createEmployee(request: Employee):Observable<Employee>{
@@ -33,6 +33,21 @@ export class EmployeeService {
 
   deleteEmployee(id: number):Observable<boolean>{
     return this.httpClient.delete<boolean>(`${this.url}DeleteEmployee?idEmployee=${id}`)
+  }
+
+
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 
 }

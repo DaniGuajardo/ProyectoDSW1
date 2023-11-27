@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { Category } from 'src/app/models/category';
 import { BookService } from 'src/app/services/book.service';
@@ -15,7 +16,8 @@ export class BookListComponent {
 
     constructor(
       private bookService:BookService,
-      private categoryService:CategoryService
+      private categoryService:CategoryService,
+      private router:Router
       ){
       this.bookService.getBooks().subscribe(res=>this.books=res);
       this.categoryService.getCategories().subscribe(res=>this.categories=res)
@@ -25,6 +27,11 @@ export class BookListComponent {
       return categoria.name;
     }
 
+    // Metodo para editar
+  editBook(id:any) {
+    this.router.navigate(['/mantenimiento/books/editBook', id]);
+  }
+
 
      //METODO PARA ELIMIAR
     deleteBook(id: number | undefined) {
@@ -32,6 +39,7 @@ export class BookListComponent {
      if (confirm('¿Estás seguro de que quieres eliminar este Libro?')) {
         this.bookService.deleteBook(id).subscribe(() => {
           console.log('Libro eliminado correctamente.');
+          alert("Se ha eliminado el libro");
           this.bookService.getBooks().subscribe(res => this.books = res);
         });
       }

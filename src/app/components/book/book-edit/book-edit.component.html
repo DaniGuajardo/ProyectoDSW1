@@ -6,39 +6,41 @@
         <div class="card-body">
             <!-- Campo no editable -->
             <div class="mb-3">
-                <label for="id" class="form-label">ID:</label>
-                <input type="text" class="form-control" id="IdBook" name="IdBook" readonly>
+                <label for="idBook" class="form-label">ID:</label>
+                <input type="text" class="form-control" id="idBook" name="idBook" readonly [(ngModel)]="IdBook">
             </div>
 
             <!-- Campos editables -->
             <div class="mb-3">
-                <label for="titulo" class="form-label">Título:</label>
-                <input type="text" class="form-control" id="Title" name="Title" required>
+                <label for="title" class="form-label m-0">Título:</label>
+                <input type="text" class="form-control" id="title" name="title" required [(ngModel)]="Title">
             </div>
 
             <div class="mb-3">
-                <label for="autor" class="form-label">Autor:</label>
-                <input type="text" class="form-control" id="Author" name="Author" required>
+                <label for="author" class="form-label m-0">Autor:</label>
+                <input type="text" class="form-control" id="author" name="author" required [(ngModel)]="Author">
             </div>
 
             <div class="mb-3">
-                <label for="idCategoria" class="form-label">ID de Categoría:</label>
-                <input type="text" class="form-control" id="IdCategory" name="IdCategory" required>
+                <label for="idCategory" class="form-label m-0">ID de Categoría:</label>
+                <select  class="form-control" id="idCategory" name="idCategory" [(ngModel)]="IdCategory">
+                    <option *ngFor="let c of categories" [value]="c.idCategory">{{c.name}}</option>
+                </select>
             </div>
 
             <div class="mb-3">
-                <label for="precio" class="form-label">Precio:</label>
-                <input type="number" class="form-control" id="Price" name="Price" required>
+                <label for="price" class="form-label m-0">Precio:</label>
+                <input type="number" class="form-control" id="price" name="price" required [(ngModel)]="Price">
             </div>
 
             <div class="mb-3">
-                <label for="stock" class="form-label">Stock:</label>
-                <input type="number" class="form-control" id="Stock" name="Stock" required>
+                <label for="stock" class="form-label m-0">Stock:</label>
+                <input type="number" class="form-control" id="stock" name="stock" required [(ngModel)]="Stock">
             </div>
 
             <div class="mb-3">
-                <label for="imageUrl" class="form-label">URL de la Imagen:</label>
-                <input type="text" class="form-control" id="ImageUrl" name="ImageUrl">
+                <label for="imageUrl" class="form-label m-0">URL de la Imagen:</label>
+                <input type="text" class="form-control" id="imageUrl" name="imageUrl" required [(ngModel)]="ImageUrl">
             </div>
 
             <!-- Agrega otros campos según tus necesidades -->

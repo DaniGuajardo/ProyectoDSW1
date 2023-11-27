@@ -8,3 +8,12 @@ export class Order {
     amount?:number
     orderItem?: OrderItem[] 
 }
+
+export interface IOrder {
+    idOrder:number;
+    idCustomer:number;
+    customerName:string; 
+    orderDate:string;  
+    amount:number;
+    orderItem: OrderItem[]; 
+}

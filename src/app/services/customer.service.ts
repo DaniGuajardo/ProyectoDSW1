@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Customer } from '../models/customer';
+import { Customer, ICustomer } from '../models/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(`${this.url}GetCustomers`);
   }
 
-  getCustomerById​(id: number):Observable<Customer>{
-    return this.httpClient.get<Customer>(`${this.url}GetCustomerById​/${id}`)
+  getCustomerById​(id: number):Observable<ICustomer>{
+    return this.httpClient.get<ICustomer>(`${this.url}GetCustomerById/${id}`)
   }
 
   getCustomersPagination(page:number, size:number):Observable<Customer[]>{

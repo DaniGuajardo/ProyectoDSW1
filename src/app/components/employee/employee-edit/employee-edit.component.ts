@@ -1,19 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Location } from '@angular/common';
-import { Employee } from 'src/app/models/employee';
+import { Employee , IEmployee} from 'src/app/models/employee';
 import { EmployeeService } from 'src/app/services/employee.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-employee-edit',
   templateUrl: './employee-edit.component.html',
   styleUrls: ['./employee-edit.component.css']
 })
-export class EmployeeEditComponent {
-  route:ActivatedRoute = inject(ActivatedRoute)
-  service = inject(EmployeeService)
-  employee:Employee = new Employee();
-
+export class EmployeeEditComponent implements OnInit{
   IdEmployee:number=0;
   Name: String = '';
   Lastname: String = '';
@@ -21,34 +18,41 @@ export class EmployeeEditComponent {
   Phone:String = '';
   Email:String='';
 
+  datosEmployee!:IEmployee;
+  
   constructor(
     private location:Location,
-    private employeeService:EmployeeService
+    private employeeService:EmployeeService,
+    private activeRoute:ActivatedRoute,
+    private route:Router
     ){
-      const IdEmployee = Number(this.route.snapshot.params['id']);
-      this.service.getEmployeeById(IdEmployee).subscribe(employee => {
-        this.employee = employee;
-       });
-      this.IdEmployee=Number(this.route.snapshot.params['id'])
       
-      //no muestra datos :(
-      this.Name = String(this.employee?.name),
-      this.Lastname = String(this.employee?.lastName),
-      this.Dni = String(this.employee?.dni),
-      this.Phone = String(this.employee?.phone),
-      this.Email = String(this.employee?.email)
+  }
+
+  ngOnInit(): void {
+    let idEmployee = Number(this.activeRoute.snapshot.paramMap.get('id'));
+    this.employeeService.getEmployeeById(idEmployee).subscribe((data) => {
+      this.datosEmployee = data
+      this.IdEmployee = idEmployee;
+      this.Name = this.datosEmployee.name;
+      this.Lastname = this.datosEmployee.lastName;
+      this.Dni = this.datosEmployee.dni;
+      this.Phone =this.datosEmployee.phone;
+      this.Email= this.datosEmployee.email;
+    })
   }
 
   guardarEmpleado() {
-    const newEmployee: Employee = { idEmployee: this.IdEmployee,
+    const employee: Employee = { idEmployee: this.IdEmployee,
                                     name: this.Name, 
                                     lastName: this.Lastname, 
                                     dni: this.Dni,
                                     phone: this.Phone,
                                     email: this.Email };
-    this.employeeService.createEmployee(newEmployee).subscribe(
+    this.employeeService.updateEmployee(employee).subscribe(
       (result) => {
         console.log('Empleado editado con éxito:', result);
+        alert("El empleado se ha editado correctamente");
         this.location.back();
       },
       (error) => {

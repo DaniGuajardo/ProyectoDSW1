@@ -6,3 +6,12 @@ export class Customer {
     phone?:String
     email?:String
 }
+
+export interface ICustomer {
+    idCustomer:number; 
+    name:string; 
+    lastName:string;
+    dni:string;
+    phone:string;
+    email:string;
+}
