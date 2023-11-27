@@ -2,31 +2,31 @@
     <div class="card-header">
         <h3>Agregar Empleado</h3>
     </div>
-    <form action="/ruta-del-servidor" method="POST">
+    <form (ngSubmit)="guardarEmpleado()" method="POST">
         <div class="card-body">
             <div class="mb-1">
                 <label for="name" class="form-label m-0">Nombre:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="name" required  [(ngModel)]="Name">
             </div>
 
             <div class="mb-1">
                 <label for="lastName" class="form-label m-0">Apellido:</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                <input type="text" class="form-control" id="lastName" name="lastName" required [(ngModel)]="Lastname">
             </div>
 
             <div class="mb-1">
                 <label for="dni" class="form-label m-0">DNI:</label>
-                <input type="text" class="form-control" id="dni" name="dni" required>
+                <input type="text" class="form-control" id="dni" name="dni" required [(ngModel)]="Dni">
             </div>
 
             <div class="mb-1">
                 <label for="phone" class="form-label m-0">Teléfono:</label>
-                <input type="tel" class="form-control" id="phone" name="phone" required>
+                <input type="tel" class="form-control" id="phone" name="phone" required [(ngModel)]="Phone">
             </div>
 
             <div class="mb-1">
                 <label for="email" class="form-label m-0">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="Email">
             </div>
         </div>
         <div class="card-footer text-end">
