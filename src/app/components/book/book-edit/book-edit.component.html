@@ -2,7 +2,7 @@
     <div class="card-header">
         <h3>Editar Libro</h3>
     </div>
-    <form action="/ruta-para-actualizar-libro" method="POST">
+    <form (ngSubmit)="guardarLibro()" method="POST">
         <div class="card-body">
             <!-- Campo no editable -->
             <div class="mb-3">

@@ -15,8 +15,8 @@ export class BookService {
     return this.httpClient.get<Book[]>(`${this.url}GetBooks`)
   }
 
-  getBookById​(id: number):Observable<Book[]>{
-    return this.httpClient.get<Book[]>(`${this.url}GetBookById​/${id}`)
+  getBookById​(id: number):Observable<Book>{
+    return this.httpClient.get<Book>(`${this.url}GetBookById​/${id}`)
   }
 
   getBooksPagination(page:number, size:number):Observable<Book[]>{

@@ -49,19 +49,19 @@ const routes: Routes = [
     children:[
       {path: '', component: BookListComponent},
       {path: 'addBook', component: BookAddComponent, title:'Nuevo Libro'},
-      {path: 'editBook', component: BookEditComponent, title:'Editar Libro'}
+      {path: 'editBook/:id', component: BookEditComponent, title:'Editar Libro'}
     ]},
     {path:'customers', component:CustomerComponent, title: 'Clientes',
     children:[
       {path: '', component: CustomerListComponent},
       {path: 'addCustomer', component: CustomerAddComponent, title:'Nuevo Cliente'},
-      {path: 'editCustomer', component: CustomerEditComponent, title:'Editar Cliente'}
+      {path: 'editCustomer/:id', component: CustomerEditComponent, title:'Editar Cliente'}
     ]},
     {path:'employees', component:EmployeeComponent, title: 'Empleados',
     children:[
       {path: '', component: EmployeeListComponent},
       {path: 'addEmployee', component: EmployeeAddComponent, title:'Nuevo Empleado'},
-      {path: 'editEmployee', component: EmployeeEditComponent, title:'Editar Empleado'}
+      {path: 'editEmployee/:id', component: EmployeeEditComponent, title:'Editar Empleado'}
     ]},
    
   ]},

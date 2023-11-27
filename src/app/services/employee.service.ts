@@ -15,8 +15,8 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(`${this.url}GetEmployees`);
   }
 
-  getEmployeeById​(id: number):Observable<Employee[]>{
-    return this.httpClient.get<Employee[]>(`${this.url}GetEmployeeById​/${id}`)
+  getEmployeeById​(id: number):Observable<Employee>{
+    return this.httpClient.get<Employee>(`${this.url}GetEmployeeById​/${id}`)
   }
 
   getEmployeesPagination(page:number, size:number):Observable<Employee[]>{

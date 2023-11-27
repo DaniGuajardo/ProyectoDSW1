@@ -15,8 +15,8 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(`${this.url}GetCustomers`);
   }
 
-  getCustomerById​(id: number):Observable<Customer[]>{
-    return this.httpClient.get<Customer[]>(`${this.url}GetCustomerById​/${id}`)
+  getCustomerById​(id: number):Observable<Customer>{
+    return this.httpClient.get<Customer>(`${this.url}GetCustomerById​/${id}`)
   }
 
   getCustomersPagination(page:number, size:number):Observable<Customer[]>{

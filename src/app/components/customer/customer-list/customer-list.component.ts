@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -9,6 +9,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class CustomerListComponent {
   customers:Customer[]=[]
+  service: CustomerService = inject(CustomerService)
   constructor(private customerService:CustomerService){
     this.customerService.getCustomers().subscribe(res=>this.customers=res)
   }
