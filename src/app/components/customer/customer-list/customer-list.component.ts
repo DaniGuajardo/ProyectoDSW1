@@ -13,4 +13,19 @@ export class CustomerListComponent {
   constructor(private customerService:CustomerService){
     this.customerService.getCustomers().subscribe(res=>this.customers=res)
   }
+
+
+ //METODO PARA ELIMIAR
+ deleteCustomer(id: number | undefined) {
+  if (id !== undefined) {
+    if (confirm('¿Estás seguro de que quieres eliminar este Cliente?')) {
+      this.customerService.deleteCustomer(id).subscribe(() => {
+        console.log('Cliente eliminada correctamente.');
+        // Recargar la lista de categorías después de la eliminación
+        this.customerService.getCustomers().subscribe(res => this.customers = res);
+      });
+    }
+  }
+}
+
 }

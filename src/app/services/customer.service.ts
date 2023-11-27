@@ -32,7 +32,7 @@ export class CustomerService {
   }
 
   deleteCustomer(id: number):Observable<boolean>{
-    return this.httpClient.delete<boolean>(`${this.url}DeleteCustomer/${id}`)
+    return this.httpClient.delete<boolean>(`${this.url}DeleteCustomer?idCustomer=${id}`)
   }
 
 }
