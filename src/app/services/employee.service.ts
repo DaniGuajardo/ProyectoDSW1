@@ -32,7 +32,7 @@ export class EmployeeService {
   }
 
   deleteEmployee(id: number):Observable<boolean>{
-    return this.httpClient.delete<boolean>(`${this.url}DeleteEmployee/${id}`)
+    return this.httpClient.delete<boolean>(`${this.url}DeleteEmployee?idEmployee=${id}`)
   }
 
 }

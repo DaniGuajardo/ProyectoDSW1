@@ -13,4 +13,18 @@ export class EmployeeListComponent {
     this.employeeService.getEmployees().subscribe(res=>this.employees=res)
   }
 
+
+ //METODO PARA ELIMIAR
+ deleteEmployee(id: number | undefined) {
+  if (id !== undefined) {
+    if (confirm('¿Estás seguro de que quieres eliminar al Trabajador?')) {
+      this.employeeService.deleteEmployee(id).subscribe(() => {
+        console.log('Trabajador eliminado correctamente.');
+        // Recargar la lista de categorías después de la eliminación
+        this.employeeService.getEmployees().subscribe(res => this.employees = res);
+      });
+    }
+  }
+}
+
 }
