@@ -1,14 +1,39 @@
-<div class="card">
+<div class="card m-auto" style="width: 50%;">
     <div class="card-header">
         <h3>Agregar Empleado</h3>
     </div>
-    <div class="card-body">
-        <p class="card-text">employee-add works!</p>
-      
-    </div>
-    <div class="card-footer  text-end">
-        <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Volver</button>
-        <button type="button" class="btn btn-success">Guardar</button>
-    </div>
+    <form action="/ruta-del-servidor" method="POST">
+        <div class="card-body">
+            <div class="mb-1">
+                <label for="name" class="form-label m-0">Nombre:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="mb-1">
+                <label for="lastName" class="form-label m-0">Apellido:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="mb-1">
+                <label for="dni" class="form-label m-0">DNI:</label>
+                <input type="text" class="form-control" id="dni" name="dni" required>
+            </div>
+
+            <div class="mb-1">
+                <label for="phone" class="form-label m-0">Teléfono:</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+
+            <div class="mb-1">
+                <label for="email" class="form-label m-0">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Volver</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+    </form>
 </div>
+
 

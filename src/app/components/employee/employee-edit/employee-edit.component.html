@@ -2,13 +2,43 @@
     <div class="card-header">
         <h3>Editar Empleado</h3>
     </div>
-    <div class="card-body">
-        <p class="card-text">employee-edit  works!</p>
-      
-    </div>
-    <div class="card-footer  text-end">
-        <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Volver</button>
-        <button type="button" class="btn btn-success">Guardar</button>
-    </div>
+    <form action="/ruta-para-actualizar-empleado" method="POST">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="IdEmployee" class="form-label">ID:</label>
+                <input type="text" class="form-control" id="IdEmployee" name="IdEmployee" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="Name" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="Name" name="Name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="LastName" class="form-label">Apellido:</label>
+                <input type="text" class="form-control" id="LastName" name="LastName" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="Dni" class="form-label">DNI:</label>
+                <input type="text" class="form-control" id="Dni" name="Dni" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="Phone" class="form-label">Teléfono:</label>
+                <input type="tel" class="form-control" id="Phone" name="Phone" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="Email" class="form-label">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="Email" name="Email" required>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Volver</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+    </form>
 </div>
+
 

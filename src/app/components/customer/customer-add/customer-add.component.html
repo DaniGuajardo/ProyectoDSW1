@@ -1,14 +1,40 @@
-<div class="card">
+<div class="card m-auto" style="width: 50%;">
     <div class="card-header">
         <h3>Agregar Cliente</h3>
     </div>
-    <div class="card-body">
-        <p class="card-text">customer-add works!</p>
-      
-    </div>
-    <div class="card-footer  text-end">
-        <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Volver</button>
-        <button type="button" class="btn btn-success">Guardar</button>
-    </div>
+    <form action="/ruta-del-servidor" method="POST">
+        <div class="card-body">
+            <div class="mb-1">
+                <label for="IdCustomer" class="form-label m-0">Nombre:</label>
+                <input type="text" class="form-control" id="IdCustomer" name="IdCustomer" required>
+            </div>
+
+            <div class="mb-1">
+                <label for="LastName" class="form-label m-0">Apellido:</label>
+                <input type="text" class="form-control" id="LastName" name="LastName" required>
+            </div>
+
+            <div class="mb-1">
+                <label for="Dni" class="form-label m-0">DNI:</label>
+                <input type="text" class="form-control" id="Dni" name="Dni" required>
+            </div>
+
+            <div class="mb-1">
+                <label for="Phone" class="form-label m-0">Teléfono:</label>
+                <input type="tel" class="form-control" id="Phone" name="Phone" required>
+            </div>
+
+            <div class="mb-1">
+                <label for="Email" class="form-label m-0">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="Email" name="Email" required>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Volver</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+    </form>
 </div>
+
+
 

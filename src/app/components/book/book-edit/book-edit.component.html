@@ -2,12 +2,51 @@
     <div class="card-header">
         <h3>Editar Libro</h3>
     </div>
-    <div class="card-body">
-        <p class="card-text">book-edit works!</p>
-      
-    </div>
-    <div class="card-footer  text-end">
-        <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Volver</button>
-        <button type="button" class="btn btn-success">Guardar</button>
-    </div>
+    <form action="/ruta-para-actualizar-libro" method="POST">
+        <div class="card-body">
+            <!-- Campo no editable -->
+            <div class="mb-3">
+                <label for="id" class="form-label">ID:</label>
+                <input type="text" class="form-control" id="IdBook" name="IdBook" readonly>
+            </div>
+
+            <!-- Campos editables -->
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título:</label>
+                <input type="text" class="form-control" id="Title" name="Title" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="autor" class="form-label">Autor:</label>
+                <input type="text" class="form-control" id="Author" name="Author" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="idCategoria" class="form-label">ID de Categoría:</label>
+                <input type="text" class="form-control" id="IdCategory" name="IdCategory" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio:</label>
+                <input type="number" class="form-control" id="Price" name="Price" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock:</label>
+                <input type="number" class="form-control" id="Stock" name="Stock" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="imageUrl" class="form-label">URL de la Imagen:</label>
+                <input type="text" class="form-control" id="ImageUrl" name="ImageUrl">
+            </div>
+
+            <!-- Agrega otros campos según tus necesidades -->
+
+        </div>
+        <div class="card-footer text-end">
+            <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Volver</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+    </form>
 </div>

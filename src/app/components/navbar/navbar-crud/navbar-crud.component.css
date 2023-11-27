@@ -1,0 +1,16 @@
+/* Estilo para la barra de navegación */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    transition: top 0.3s;
+  }
+  
+  /* Estilo para ocultar la barra de navegación al hacer scroll hacia abajo */
+  .navbar-hidden {
+    top: -50px; /* ajusta la altura según tu diseño */
+  }
