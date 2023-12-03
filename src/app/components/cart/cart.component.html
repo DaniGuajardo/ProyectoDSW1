@@ -21,9 +21,22 @@
                     <td class="text-center"><img src="{{item.imageUrl}}" width="75"></td>
                     <td>{{item.title}}</td>
                     <td>{{item.price| currency:'S/ '}}</td>
-                    <td>{{item.stock}}</td>
+                    <td>
+                        <div class="productCart-buttons-operators" >
+                            <i
+                              class="fa-solid fa-minus"
+                              (click)="updateUnits('minus', item.idBook!)"
+                            ></i>
+                            <span>{{ item.stock }}</span>
+                            <i
+                              class="fa-solid fa-plus"
+                              (click)="updateUnits('add', item.idBook!)"
+                            ></i>
+                          </div>
+                    </td>
                     <td>{{ subtotalBook(item.price!, item.stock!) | currency:'S/ '}}</td>
                     <td class="text-center">
+                        
                         <a class="btn btn-sm btn-outline-danger" (click)="deleteBook(item.idBook!)">Eliminar</a>
                     </td>
                 </tr>
@@ -40,28 +53,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <label for="subtotal" class="form-label">Subtotal:</label>
-                        <input type="text" class="form-control" id="subtotal" name="subtotal" [(ngModel)]="SubTotal">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="envio" class="form-label">Precio Envío:</label>
-                        <input type="text" class="form-control" id="envio" name="envio" [(ngModel)]="Envio">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="descuento" class="form-label">Descuento:</label>
-                        <input type="text" class="form-control" id="descuento" name="descuento" [(ngModel)]="Descuento">
-                    </td>
-                </tr>
+  
                 <tr>
                     <td>
                         <label for="total" class="form-label">Total:</label>
-                        <input type="text" class="form-control fw-bold" id="total" name="total" [(ngModel)]="Total">
+                        <input type="text" class="form-control fw-bold" id="total" name="total" [(ngModel)]="Total" value={{totalCart()}}>
                     </td>
                 </tr>
                 <tr>
@@ -76,16 +72,8 @@
             <tfoot class="table-secondary">
                 <tr>
                     <td class="text-center px-3">
-                        <form method="post">
-                            <button type="submit" class="btn btn-danger w-100">Calcular Envio y
-                                Descuento</button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center px-3">
                         <form  method="post" onsubmit="confirmacion();">
-                            <button type="submit" class="btn btn-danger w-100">Realizar pago y
+                            <button type="submit" class="btn btn-success w-100">Realizar pago y
                                 registrar</button>
                             <script>
                                 function confirmacion() {

@@ -1,0 +1,10 @@
+.productCart-buttons-operators{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    span{
+        border:1px solid lightgrey;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+    }
+}
