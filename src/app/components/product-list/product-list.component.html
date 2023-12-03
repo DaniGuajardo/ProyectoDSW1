@@ -20,7 +20,7 @@
               <div class="card-body d-flex">
                 <div>
                   <h4 class="card-title">
-                    <a class="list-group-item" href="#">{{b.title}}</a>
+                    <a class="list-group-item" (click)="viewBook(b.idBook)">{{b.title}}</a>
                   </h4>
                   <h5 class="card-text">{{b.price| currency:'S/ ' }}</h5>
                 </div>

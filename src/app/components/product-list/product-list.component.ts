@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { Category } from 'src/app/models/category';
 import { OrderItem } from 'src/app/models/order-item';
@@ -28,7 +29,8 @@ export class ProductListComponent {
   constructor(
     private bookService:BookService,
     private categoryService:CategoryService,
-    private cartService:CartService){
+    private cartService:CartService,
+    private router:Router){
     this.bookService.getBooks().subscribe(res=>this.books=res),
     this.categoryService.getCategories().subscribe(res=>{
       this.categories = res
@@ -54,6 +56,10 @@ export class ProductListComponent {
 
   agregarCarrito(item:Book){
     this.cartService.addBook(item)
+  }
+
+  viewBook(id:any) {
+    this.router.navigate(['/product-view', id]);
   }
   
 

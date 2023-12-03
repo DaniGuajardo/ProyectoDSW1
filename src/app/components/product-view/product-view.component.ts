@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/app/services/book.service';
-import { IBook } from 'src/app/models/book';
+import { Book, IBook } from 'src/app/models/book';
+import { Location } from '@angular/common';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-view',
@@ -14,7 +16,9 @@ export class ProductViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private bookService: BookService
+    private bookService: BookService,
+    private location:Location,
+    private cartService:CartService
   ) { }
 
   ngOnInit(): void {
@@ -34,9 +38,13 @@ export class ProductViewComponent implements OnInit {
     }
   }
 
+  agregarCarrito(item:Book){
+    this.cartService.addBook(item)
+  }
+
   // Método para ir hacia atrás
-  goBack(): void {
-    this.router.navigate(['/product-list']);
+  goBack(){
+    this.location.back();
   }
 }
 

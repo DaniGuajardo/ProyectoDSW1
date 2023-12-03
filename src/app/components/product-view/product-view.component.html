@@ -1,13 +1,27 @@
 <div *ngIf="product">
     <h3>{{ product.title }}</h3>
-    <p><strong>Author:</strong> {{ product.author }}</p>
-    <p><strong>Category:</strong> {{ product.idCategory }}</p>
-    <p><strong>Price:</strong> {{ product.price | currency:'USD':'symbol' }}</p>
-    <p><strong>Stock:</strong> {{ product.stock }}</p>
-    <!-- Agregar más detalles según sea necesario -->
+    <div class="row">
+      <!-- Columna izquierda para la imagen del producto -->
+       <div class="col-md-6 mb-3">
+          <!-- Utiliza th:src para establecer la URL de la imagen -->
+        <img src="{{product.imageUrl}}" class="img-fluid" style="width: 50%;">
+      </div>
+
+      <!-- Columna derecha para los datos del producto -->
+      <div class="col-md-6">
+        <p><strong>Author:</strong> {{ product.author }}</p>
+        <p><strong>Category:</strong> {{ product.idCategory }}</p>
+        <p><strong>Price:</strong> {{ product.price | currency:'S/ '  }}</p>
+        <p><strong>Stock:</strong> {{ product.stock }}</p>
+        <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Go Back</button>
+        <button type="button" class="btn btn-outline-secondary m-1" (click)="agregarCarrito(product)">Agregar al carrito</button>
+              
+      </div>
+      
   </div>
+</div>
   
-  <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Go Back</button>
+  
   
   <app-footer></app-footer>
   
