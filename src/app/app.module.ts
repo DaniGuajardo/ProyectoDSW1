@@ -33,10 +33,15 @@ import { EmployeeAddComponent } from './components/employee/employee-add/employe
 import { EmployeeEditComponent } from './components/employee/employee-edit/employee-edit.component';
 import { BookAddComponent } from './components/book/book-add/book-add.component';
 import { BookEditComponent } from './components/book/book-edit/book-edit.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 const routes: Routes = [
-  {path:'', component:InicioComponent},
+  {path:'', component:InicioComponent,
+children:[
+  {path: '', component: ProductListComponent},
+  {path:'cart', component:CartComponent, title:'Carrito'}
+]},
   {path:'mantenimiento', component:CrudComponent, 
   children:[
     {path:'categories', component:CategoryComponent, title: 'Categorias',
@@ -98,7 +103,8 @@ const routes: Routes = [
     EmployeeAddComponent,
     EmployeeEditComponent,
     BookAddComponent,
-    BookEditComponent
+    BookEditComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

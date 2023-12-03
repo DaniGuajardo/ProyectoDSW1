@@ -1,16 +1,41 @@
-<div class="row">
-    <div *ngFor="let b of books" class="col-lg-4 col-md-6 mb-4">
-      <div class="card h-90">
-          <a href="#"><img class="card-img-top" src="{{b.imageUrl}}" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">{{b.title}}</a>
-            </h4>
-            <h5>{{b.price| currency:'S/ ' }}</h5>
-          </div>
-          <div class="card-footer">
-            <button class="btn btn-outline-secondary btn-block">(+) Agregar</button>
-          </div>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="list-group ">
+        <a  class="list-group-item list-group-item-action " 
+        (click)="listarProductos()"
+        [class.active]="categorySelected == null">Todos
+        </a>
+        <a *ngFor="let c of categories"  class="list-group-item list-group-item-action " 
+        (click)="seleccionarCategoria(c)"
+        [class.active]="c == categorySelected">{{c.name}}
+        </a>
       </div>
     </div>
+    <div class="col-lg-9">
+      <h3>{{Titulo}}</h3>
+      <div class="row">
+        <div *ngFor="let b of books" class="col-lg-4 col-md-6 mb-4">
+          <div class="card h-90 ">
+              <a href="#"><img class="card-img-top rounded mx-auto d-block" src="{{b.imageUrl}}" alt="" style="width: 70%;"></a>
+              <div class="card-body d-flex">
+                <div>
+                  <h4 class="card-title">
+                    <a class="list-group-item" href="#">{{b.title}}</a>
+                  </h4>
+                  <h5 class="card-text">{{b.price| currency:'S/ ' }}</h5>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline-secondary btn-block float-end" (click)="agregarCarrito(b)"><i class="bi bi-plus-lg"></i>Agregar</button>
+              </div>
+          </div>
+        </div>
+    </div>
+    </div>
   </div>
+
+<app-footer></app-footer>
+
+
+
+

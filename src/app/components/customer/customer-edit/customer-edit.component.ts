@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './customer-edit.component.html',
   styleUrls: ['./customer-edit.component.css']
 })
-export class CustomerEditComponent  {
+export class CustomerEditComponent implements OnInit {
   IdCustomer:number=0;
   Name: String = '';
   Lastname: String = '';

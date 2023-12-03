@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Book, IBook } from '../models/book';
 
 @Injectable({
@@ -33,6 +33,23 @@ export class BookService {
 
   deleteBook(id: number):Observable<boolean>{
     return this.httpClient.delete<boolean>(`${this.url}DeleteBook?idBook=${id}`)
+  }
+
+  getBooksByCategory(id: number){
+    return this.httpClient.get<Book[]>(`${this.url}GetBooksByCategory/${id}`).pipe(catchError(this.handleError))
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 
 }

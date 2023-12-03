@@ -8,11 +8,18 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  //categories =["Pantalones","Camisas","Zapatos","Polos"]
   categories:Category[]=[]
+  categorySelected:Category|undefined;
+
   constructor(private categoryService:CategoryService){
     this.categoryService.getCategories().subscribe(res=>{
       this.categories = res
     })
   }
+
+  seleccionarCategoria(categoria:Category){
+    this.categorySelected = categoria;
+  }
 }
+
+

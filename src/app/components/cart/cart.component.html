@@ -1,0 +1,101 @@
+<h1>Carrito</h1>
+<div class="row">
+    <!-- INFORMACION DE PRODUCTOS ADQUIRIDOS -->
+    <div class="col-md-9">
+        <table class="table table-responsive table-hover align-middle">
+            <thead >
+                <tr>
+                    <th>ID</th>
+                    <th>PRODUCTO</th>
+                    <th>DESCRIPCIÓN</th>
+                    <th>PRECIO</th>
+                    <th>CANTIDAD</th>
+                    <th>SUBTOTAL</th>
+                    <th class="text-center">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+               
+                <tr *ngFor="let item of myCart$ | async" class="align-middle">
+                    <td>{{item.idBook}}</td>
+                    <td class="text-center"><img src="{{item.imageUrl}}" width="75"></td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.price| currency:'S/ '}}</td>
+                    <td>{{item.stock}}</td>
+                    <td>{{ subtotalBook(item.price!, item.stock!) | currency:'S/ '}}</td>
+                    <td class="text-center">
+                        <a class="btn btn-sm btn-outline-danger" (click)="deleteBook(item.idBook!)">Eliminar</a>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <!-- DETALLE DE VENTA -->
+    <div class="col-md-3">
+        <table class="table table-responsive table-borderless">
+            <thead class="table-secondary">
+                <tr>
+                    <th>Generar Compra</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="subtotal" class="form-label">Subtotal:</label>
+                        <input type="text" class="form-control" id="subtotal" name="subtotal" [(ngModel)]="SubTotal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="envio" class="form-label">Precio Envío:</label>
+                        <input type="text" class="form-control" id="envio" name="envio" [(ngModel)]="Envio">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="descuento" class="form-label">Descuento:</label>
+                        <input type="text" class="form-control" id="descuento" name="descuento" [(ngModel)]="Descuento">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="total" class="form-label">Total:</label>
+                        <input type="text" class="form-control fw-bold" id="total" name="total" [(ngModel)]="Total">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="idCustomer" class="form-label m-0">Cliente:</label>
+                        <select  class="form-control" id="idCliente" name="idCliente" [(ngModel)]="IdCustomer">
+                            <option *ngFor="let c of customers" [value]="c.idCustomer">{{c.name}}</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot class="table-secondary">
+                <tr>
+                    <td class="text-center px-3">
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger w-100">Calcular Envio y
+                                Descuento</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center px-3">
+                        <form  method="post" onsubmit="confirmacion();">
+                            <button type="submit" class="btn btn-danger w-100">Realizar pago y
+                                registrar</button>
+                            <script>
+                                function confirmacion() {
+                                    alert("Compra registrada con exito");
+                                }
+                            </script>
+                        </form>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
