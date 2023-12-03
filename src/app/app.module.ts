@@ -34,13 +34,15 @@ import { EmployeeEditComponent } from './components/employee/employee-edit/emplo
 import { BookAddComponent } from './components/book/book-add/book-add.component';
 import { BookEditComponent } from './components/book/book-edit/book-edit.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ProductViewComponent } from './components/product-view/product-view.component';
 
 
 const routes: Routes = [
   {path:'', component:InicioComponent,
 children:[
   {path: '', component: ProductListComponent},
-  {path:'cart', component:CartComponent, title:'Carrito'}
+  {path:'cart', component:CartComponent, title:'Carrito'},
+  { path: 'product-view/:id', component: ProductViewComponent, title: 'Producto Ver' }
 ]},
   {path:'mantenimiento', component:CrudComponent, 
   children:[
@@ -68,6 +70,7 @@ children:[
       {path: 'addEmployee', component: EmployeeAddComponent, title:'Nuevo Empleado'},
       {path: 'editEmployee/:id', component: EmployeeEditComponent, title:'Editar Empleado'}
     ]},
+
    
   ]},
   
@@ -104,7 +107,8 @@ children:[
     EmployeeEditComponent,
     BookAddComponent,
     BookEditComponent,
-    CartComponent
+    CartComponent,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,

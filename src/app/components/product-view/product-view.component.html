@@ -1,0 +1,14 @@
+<div *ngIf="product">
+    <h3>{{ product.title }}</h3>
+    <p><strong>Author:</strong> {{ product.author }}</p>
+    <p><strong>Category:</strong> {{ product.idCategory }}</p>
+    <p><strong>Price:</strong> {{ product.price | currency:'USD':'symbol' }}</p>
+    <p><strong>Stock:</strong> {{ product.stock }}</p>
+    <!-- Agregar más detalles según sea necesario -->
+  </div>
+  
+  <button type="button" class="btn btn-secondary m-1" (click)="goBack()">Go Back</button>
+  
+  <app-footer></app-footer>
+  
+  
