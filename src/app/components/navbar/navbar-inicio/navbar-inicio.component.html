@@ -12,7 +12,7 @@
                 </li>
                 <li  class="nav-item">
                     
-                    <a class="nav-link">0</a>
+                    <a class="nav-link" *ngIf="(myCart$ | async)?.length">{{ (myCart$ | async)?.length }}</a>
                 </li>
   
                 <li  class="nav-item">

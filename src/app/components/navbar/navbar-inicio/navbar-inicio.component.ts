@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-navbar-inicio',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class NavbarInicioComponent {
 
+  myCart$ = this.cartService.myCart$;
+
+  constructor(private cartService: CartService) { }
 }

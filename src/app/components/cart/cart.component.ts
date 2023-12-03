@@ -5,7 +5,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Order } from 'src/app/models/order';
 import { OrderItem } from 'src/app/models/order-item';
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +16,7 @@ export class CartComponent {
   customers:Customer[]=[]
   IdCustomer: number = 0;
   CustomerName?:String 
-  OrderDate?:String 
+  
   Total:number=this.totalCart();
   IdBook?:number 
   Title?:String 
@@ -74,7 +74,6 @@ export class CartComponent {
                                       subTotal: this.SubTotal};
     const newOrder:Order = { idCustomer:this.IdCustomer,
                              customerName:this.CustomerName,
-                             orderDate:this.OrderDate, 
                              amount:this.Total,
                              orderItem:[newOrderItem]};
                              
