@@ -64,5 +64,16 @@ export class CartService {
     this.myCart.next(this.myList);
   }
 
+  findBookById(id: number) {
+    return this.myList.find((element) => {
+      return element.idBook === id
+    })
+  }
+
+  totalCart() {
+    const total = this.myList.reduce(function (acc, book) { return acc + (book.stock! * book.price!); }, 0)
+    return total
+  }
+
   
 }
